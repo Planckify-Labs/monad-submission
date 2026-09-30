@@ -75,13 +75,15 @@ TakumiPay smart contracts are deployed live on **Monad Mainnet** (real AUSD remi
 *(Mandatory disclosure under Section 4.1 Clause 4 of Metropolis Hackathon Rules)*
 
 1. **Pre-Existing Foundation (Prior to September 1, 2026):**
-   TakumiPay's core multi-chain wallet scaffolding, NestJS payment intent schemas, and multi-chain contract design originated prior to the hackathon.
+   Foundational mobile UI design system, cryptographic signing utilities, and payment gateway primitives originated prior to the hackathon.
 2. **Substantial Work Built During Hackathon Window (September 16 – September 28, 2026):**
-   - **Mera Passkey Account Layer:** WebAuthn PRF key derivation and passkey-first biometric login on mobile.
-   - **Monad Network & Agora AUSD Integration:** Configured chain adapters, pinned gas limits, and token catalog feeds across mobile and API.
-   - **TakumiPay 2.1.0 Monad Deployments:** Deployed and verified on Monad Mainnet (`143`) and Testnet (`10143`).
-   - **Non-Blocking Settlement UX:** Built visual progress hero timelines with optimistic updates and async confirmation.
-   - **Takumi Agent Kimi K2.6 Integration:** Natural-language conversational remittance routing and audio waveforms.
+   *The entire consumer remittance, passkey, and settlement product was engineered specifically for the Monad ecosystem:*
+   - **Monad-First App Experience & Ecosystem Lockdown:** Implemented an app-wide Monad lockdown (`FEATURE_PASSKEY_ONLY_ONBOARDING`), focusing wallet creation, chain pickers, and transaction flows exclusively on Monad Mainnet (`143`) and Testnet (`10143`).
+   - **Mera Passkey Account Layer:** WebAuthn PRF key derivation enabling seedless, biometric Face ID/Fingerprint onboarding tailored for non-crypto consumers.
+   - **Monad Network & Agora AUSD Integration:** Configured Monad execution parameters, sub-cent fee handling, and Agora AUSD contract integration.
+   - **TakumiPay 2.1.0 Monad Deployments:** Deployed and verified UUPS contracts on Monad Mainnet (`0x479B0843C3e0627f36551660506dEd5b349Fa968`) and Monad Testnet (`0x9EEC5aD4FC092fD468A8114007e541238F4Ba5ee`).
+   - **Non-Blocking Settlement UX:** Built a streaming visual settlement hero (`Preparing` → `Confirming` → `Paid`) engineered to take advantage of Monad's ~600ms block finality.
+   - **Takumi Agent (Kimi K2.6):** Conversational remittance orchestrator allowing users to send AUSD over Monad in natural language.
 3. **AI Tools Disclosure:**
    Assisted by Claude (Sonnet/Opus) and Gemini for design synthesis, test generation, and documentation.
 
