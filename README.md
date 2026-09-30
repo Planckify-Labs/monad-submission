@@ -34,7 +34,7 @@ All code repositories are open source under the **GNU General Public License v3.
 
 | Repository | Description | Tech Stack |
 |---|---|---|
-| [`monad-submission-mobile-app`](https://github.com/Planckify-Labs/monad-submission-mobile-app) | Consumer mobile wallet: biometric passkey onboarding, Monad lockdown, non-blocking settlement timeline, Takumi Agent UI | React Native, Expo 54, viem, NativeWind |
+| [`monad-submission-mobile-app`](https://github.com/Planckify-Labs/monad-submission-mobile-app) | Consumer mobile wallet: biometric passkey onboarding, dedicated Monad rails, non-blocking settlement timeline, Takumi Agent UI | React Native, Expo 54, viem, NativeWind |
 | [`monad-submission-contract`](https://github.com/Planckify-Labs/monad-submission-contract) | TakumiPay 2.1.0 UUPS proxy settlement contract, `MockAUSD.sol`, Foundry scripts, and test suites | Solidity, Foundry (EVM) |
 | [`monad-submission-api`](https://github.com/Planckify-Labs/monad-submission-api) | Backend API: Monad network & token catalog seeds, EIP-712 merchant quote signing service, intent settlement state machine | NestJS, Prisma, PostgreSQL, Redis |
 | [`monad-submission-agent-api`](https://github.com/Planckify-Labs/monad-submission-agent-api) | Multi-agent orchestrator: Kimi K2.6 intelligence, intent classification, and capability tool execution envelopes | TypeScript, Vercel AI SDK, Moonshot Kimi |
@@ -78,7 +78,7 @@ TakumiPay smart contracts are deployed live on **Monad Mainnet** (real AUSD remi
    Foundational mobile UI design system, cryptographic signing utilities, and payment gateway primitives originated prior to the hackathon.
 2. **Substantial Work Built During Hackathon Window (September 16 – September 28, 2026):**
    *The entire consumer remittance, passkey, and settlement product was engineered specifically for the Monad ecosystem:*
-   - **Monad-First App Experience & Ecosystem Lockdown:** Implemented an app-wide Monad lockdown (`FEATURE_PASSKEY_ONLY_ONBOARDING`), focusing wallet creation, chain pickers, and transaction flows exclusively on Monad Mainnet (`143`) and Testnet (`10143`).
+   - **Dedicated Monad Consumer Architecture:** Engineered a streamlined user journey centered exclusively on Monad Mainnet (`143`) and Testnet (`10143`), eliminating network switching, chain dropdowns, and onboarding friction for everyday users.
    - **Mera Passkey Account Layer:** WebAuthn PRF key derivation enabling seedless, biometric Face ID/Fingerprint onboarding tailored for non-crypto consumers.
    - **Monad Network & Agora AUSD Integration:** Configured Monad execution parameters, sub-cent fee handling, and Agora AUSD contract integration.
    - **TakumiPay 2.1.0 Monad Deployments:** Deployed and verified UUPS contracts on Monad Mainnet (`0x479B0843C3e0627f36551660506dEd5b349Fa968`) and Monad Testnet (`0x9EEC5aD4FC092fD468A8114007e541238F4Ba5ee`).
