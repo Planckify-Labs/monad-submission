@@ -13,7 +13,7 @@
   - **Kimi Bounty:** Multi-agent orchestrator powered by Kimi K2.6 driving conversational remittance
 - **License:** [GNU General Public License v3.0 (GPLv3)](./LICENSE)
 
-> 📱 **Notice for Judges & Testers**: Please install and test the Preview APK on a **physical device** (Android phone with biometric support such as fingerprint or Face Unlock). Mera's passkey authentication utilizes hardware-backed WebAuthn PRF extensions, which may not operate correctly on Android emulators or simulators lacking native biometric authenticators.
+> 📱 **Notice for Judges & Testers**: Please install and test the Preview APK on a **physical device** (Android phone with biometric support such as fingerprint or Face Unlock). Mera's passkey key derivation relies on the **WebAuthn PRF (Pseudo-Random Function) extension** and platform biometric authenticators (Google Credential Manager). Android emulators typically lack biometric enrollment and PRF extension support in their virtual Google Play Services environment, which will prevent the passkey onboarding ceremony from completing.
 
 ---
 
