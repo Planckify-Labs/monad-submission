@@ -201,7 +201,7 @@ TakumiPay smart contracts are deployed live on **Monad Mainnet** (real AUSD paym
 Payments are the product. Takumi Agent is where we plan to make that product more helpful over time. **The items below are future development, not part of what this submission ships.**
 
 - **Learn from how you spend, with your consent,** so suggestions fit your own habits instead of generic advice.
-- **Help you save (*menabung*).** Spot idle balances and suggest savings and DeFi strategies. The DeFi engine already exists in our codebase for other chains; bringing it to a Monad venue is the next step.
+- **Help you save (*menabung*).** Spot idle balances and suggest savings and DeFi strategies. The DeFi engine already exists in our codebase.
 - **Always suggest, never act alone.** Every move stays a user-approved action, using the same approval layer that protects payments today.
 
 ---
