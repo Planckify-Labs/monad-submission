@@ -210,9 +210,9 @@ Payments are the product. Takumi Agent is where we plan to make that product mor
 
 *(Mandatory disclosure under Section 4.1 Clause 4 of Metropolis Hackathon Rules)*
 
-1. **Pre-Existing Foundation (Prior to September 1, 2026):**
+1. **Pre-Existing Foundation (Before the Hackathon):**
    Foundational mobile UI design system, cryptographic signing utilities, and payment gateway primitives originated prior to the hackathon.
-2. **Substantial Work Built During Hackathon Window (September 16 – September 28, 2026):**
+2. **Substantial Work Built During the Hackathon Window:**
    *The entire consumer payments, passkey, and settlement product was engineered specifically for the Monad ecosystem:*
    - **Dedicated Monad Consumer Architecture:** Engineered a streamlined user journey centered exclusively on Monad Mainnet (`143`) and Testnet (`10143`), eliminating network switching, chain dropdowns, and onboarding friction for everyday users.
    - **Mera Passkey Account Layer:** WebAuthn PRF key derivation enabling seedless, biometric Face ID/Fingerprint onboarding tailored for non-crypto consumers.
