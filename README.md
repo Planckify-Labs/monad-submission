@@ -1,7 +1,7 @@
 # TakumiPay — Monad Metropolis Hackathon 2026
 
-> **Consumer Cross-Border Remittances & QRIS Merchant Settlement Powered by Monad**  
-> *Seedless onboarding with Mera biometric passkeys, sub-second settlement with Agora AUSD, and AI-driven remittance via Takumi Agent.*
+> **Spend AUSD anywhere in Indonesia with one tap, powered by Monad**  
+> *Passkey sign-up with Mera, ~600ms settlement on Monad, and Takumi Agent as a built-in companion that helps you manage your money.*
 
 - **Team:** Planckify Labs
 - **Track Entered:** Track 02 — Consumer Products & Payments
@@ -10,7 +10,7 @@
 - **Targeted Sponsor Bounties:**
   - **Mera Bounty:** Passkey account layer as the entire onboarding experience (zero seed phrase)
   - **Agora Bounty:** Full on-chain Agora AUSD stablecoin integration
-  - **Kimi Bounty:** Multi-agent orchestrator powered by Kimi K2.6 driving conversational remittance
+  - **Kimi Bounty:** Takumi Agent, powered by Kimi K2.6, built into the payment experience to check balances and send AUSD from plain-language requests, with every action approved by the user
 - **License:** [GNU General Public License v3.0 (GPLv3)](./LICENSE)
 
 > 📱 **Notice for Judges & Testers**: Please install and test the Preview APK on a **physical device** (Android phone with biometric support such as fingerprint or Face Unlock). Mera's passkey key derivation relies on the **WebAuthn PRF (Pseudo-Random Function) extension** and platform biometric authenticators (Google Credential Manager). Android emulators typically lack biometric enrollment and PRF extension support in their virtual Google Play Services environment, which will prevent the passkey onboarding ceremony from completing.
@@ -19,7 +19,7 @@
 
 ## Product at a Glance
 
-TakumiPay is built on two pillars that meet in one simple experience:
+TakumiPay is a payments app first. Takumi Agent is the companion that helps people manage their money, inside the same simple experience.
 
 ```text
                   TAKUMIPAY
@@ -43,30 +43,31 @@ TakumiPay is built on two pillars that meet in one simple experience:
 
 | Pillar | What it is | In this submission |
 |---|---|---|
-| **Payments** | Stablecoins that people can spend in the real world, not just hold. | Agora AUSD on Monad, spent at QRIS merchants and PPOB bills (electricity, pulsa, data) through national QR rails. |
-| **Intelligence** | **Takumi Agent**, a financial companion that goes beyond sending money. | Conversational remittance powered by Kimi K2.6, plus a DeFi specialist for yield and strategies. |
+| **Payments** (the product) | Agora AUSD that people can spend in the real world, not just hold. | Spent on Monad at QRIS merchants and PPOB bills (electricity, pulsa, data) through national QR rails, and sent to family abroad. QRIS merchant spend is verified end-to-end on Monad testnet (see Deployments). |
+| **Intelligence** (the companion) | **Takumi Agent** helps users manage their money in plain words. | Powered by Kimi K2.6: checks balances and sends AUSD from a sentence, with every action approved by the user. DeFi and savings guidance is the next step (see Roadmap). |
 | **Simple user experience** | Everything above collapses into one gesture. | Passkey sign-up and a biometric tap to pay (Mera), with no seed phrase to write down. |
 
 ---
 
 ## The Vision
 
-Cross-border remittance is the definitive consumer application where on-chain rails provide immediate, tangible superiority over traditional banking:
-- Migrant workers in Southeast Asia routinely endure 2–5 day settlement delays and 5–10% hidden foreign exchange markups.
-- Crypto solutions historically failed these users because of UX friction: seed phrases, gas asset confusion, and the inability to spend received tokens locally.
+Digital dollars like Agora AUSD are fast, cheap, and stable, yet most people cannot use them where they live:
+- **Holding is not spending.** Balances sit idle because merchants and utility bills run on local rails, so users have to off-ramp before they can use their money.
+- **Crypto UX gets in the way.** Seed phrases, gas asset confusion, and wallet jargon lose everyday users before the first payment.
 
-TakumiPay delivers a friction-free consumer financial experience by combining:
+TakumiPay removes both problems:
 1. **Mera Passkeys:** One-tap biometric sign-up (Face ID / Fingerprint) deriving a secp256k1 EOA via WebAuthn PRF. No seed phrases or recovery phrases ever shown to the user.
-2. **Monad Speed & Scale:** ~600ms block finality and sub-cent gas fees make remittances instant and affordable.
+2. **Monad Speed & Scale:** ~600ms block finality and sub-cent gas fees make everyday payments instant and affordable.
 3. **Agora AUSD Stablecoin:** Dollars held safely in cash-and-treasury-backed AUSD (`0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a`).
-4. **Immediate Spendability (QRIS / UMKM):** Recipients do not need to off-ramp to fiat. They can spend their balance directly at 44M+ merchants across Indonesia via national QR rails.
-5. **Takumi Agent (Kimi K2.6):** Users can simply speak or text to send money: *"Send $50 to my mom in Jakarta"*.
+4. **Immediate Spendability (QRIS / UMKM):** No off-ramp step. Balances are spent directly at 44M+ merchants across Indonesia via national QR rails.
+5. **Sending money home:** The same rails serve migrant workers in Southeast Asia, who today endure 2–5 day settlement delays and 5–10% hidden foreign exchange markups.
+6. **Takumi Agent (Kimi K2.6):** A companion built into the app. Users can ask in plain words, such as *"What's my balance?"* or *"Send $50 to my mom in Jakarta"*, and approve each action with a tap.
 
 ---
 
 ## End-to-End System Architecture
 
-The following diagram illustrates how TakumiPay's multi-agent intelligence, backend microservices, Monad smart contracts, and real-world payment rails communicate end-to-end:
+The following diagram illustrates how TakumiPay's payment flow, Takumi Agent companion, backend microservices, Monad smart contracts, and real-world payment rails communicate end-to-end:
 
 ```mermaid
 flowchart TD
@@ -81,10 +82,10 @@ flowchart TD
         AppUI -->|"Instant Optimistic Receipt"| HeroUI
     end
 
-    subgraph AgentSystem ["2. Takumi Agent Intelligence (Kimi K2.6)"]
+    subgraph AgentSystem ["2. Takumi Agent Companion (Kimi K2.6)"]
         AgentAPI["🤖 Agent Orchestrator (/agent-api)"]
         CoreAgent["🧠 Core Agent (Orchestrator, Zero Write Rights)"]
-        WalletAgent["💳 Wallet Specialist (Balances, AUSD Remittances)"]
+        WalletAgent["💳 Wallet Specialist (Balances, AUSD Transfers)"]
         DefiAgent["📈 DeFi Specialist (Yields, Swaps, Routes)"]
         
         AppUI <-->|"SSE Protocol / Voice Waveforms"| AgentAPI
@@ -162,15 +163,15 @@ All code repositories are open source under the **GNU General Public License v3.
 | [`monad-submission-mobile-app`](https://github.com/Planckify-Labs/monad-submission-mobile-app) | Consumer mobile wallet: biometric passkey onboarding, dedicated Monad rails, non-blocking settlement timeline, Takumi Agent UI | React Native, Expo 54, viem, NativeWind |
 | [`monad-submission-contract`](https://github.com/Planckify-Labs/monad-submission-contract) | TakumiPay 2.1.0 UUPS proxy settlement contract, `MockAUSD.sol`, Foundry scripts, and test suites | Solidity, Foundry (EVM) |
 | [`monad-submission-api`](https://github.com/Planckify-Labs/monad-submission-api) | Backend API: Monad network & token catalog seeds, EIP-712 merchant quote signing service, intent settlement state machine | NestJS, Prisma, PostgreSQL, Redis |
-| [`monad-submission-agent-api`](https://github.com/Planckify-Labs/monad-submission-agent-api) | Multi-agent orchestrator: Kimi K2.6 intelligence, intent classification, and capability tool execution envelopes | TypeScript, Vercel AI SDK, Moonshot Kimi |
+| [`monad-submission-agent-api`](https://github.com/Planckify-Labs/monad-submission-agent-api) | Takumi Agent service: Kimi K2.6 companion, intent routing, and capability tool execution envelopes | TypeScript, Vercel AI SDK, Moonshot Kimi |
 
 ---
 
 ## Monad On-Chain Deployments
 
-TakumiPay smart contracts are deployed live on **Monad Mainnet** (real AUSD remittance rail) and **Monad Testnet** (merchant-spend verification rail):
+TakumiPay smart contracts are deployed live on **Monad Mainnet** (real AUSD payment rail) and **Monad Testnet** (merchant-spend verification rail):
 
-### 1. Monad Mainnet (`chainId: 143`) — Production Remittance Rail
+### 1. Monad Mainnet (`chainId: 143`) — Production AUSD Rail
 
 | Component | Detail | Address / Hash | Explorer |
 |---|---|---|---|
@@ -195,6 +196,16 @@ TakumiPay smart contracts are deployed live on **Monad Mainnet** (real AUSD remi
 
 ---
 
+## Roadmap: A Companion That Grows With You
+
+Payments are the product. Takumi Agent is where we plan to make that product more helpful over time. **The items below are future development, not part of what this submission ships.**
+
+- **Learn from how you spend, with your consent,** so suggestions fit your own habits instead of generic advice.
+- **Help you save (*menabung*).** Spot idle balances and suggest savings and DeFi strategies. The DeFi engine already exists in our codebase for other chains; bringing it to a Monad venue is the next step.
+- **Always suggest, never act alone.** Every move stays a user-approved action, using the same approval layer that protects payments today.
+
+---
+
 ## Originality & Hackathon Build Window Disclosure
 
 *(Mandatory disclosure under Section 4.1 Clause 4 of Metropolis Hackathon Rules)*
@@ -202,13 +213,13 @@ TakumiPay smart contracts are deployed live on **Monad Mainnet** (real AUSD remi
 1. **Pre-Existing Foundation (Prior to September 1, 2026):**
    Foundational mobile UI design system, cryptographic signing utilities, and payment gateway primitives originated prior to the hackathon.
 2. **Substantial Work Built During Hackathon Window (September 16 – September 28, 2026):**
-   *The entire consumer remittance, passkey, and settlement product was engineered specifically for the Monad ecosystem:*
+   *The entire consumer payments, passkey, and settlement product was engineered specifically for the Monad ecosystem:*
    - **Dedicated Monad Consumer Architecture:** Engineered a streamlined user journey centered exclusively on Monad Mainnet (`143`) and Testnet (`10143`), eliminating network switching, chain dropdowns, and onboarding friction for everyday users.
    - **Mera Passkey Account Layer:** WebAuthn PRF key derivation enabling seedless, biometric Face ID/Fingerprint onboarding tailored for non-crypto consumers.
    - **Monad Network & Agora AUSD Integration:** Configured Monad execution parameters, sub-cent fee handling, and Agora AUSD contract integration.
    - **TakumiPay 2.1.0 Monad Deployments:** Deployed and verified UUPS contracts on Monad Mainnet (`0x479B0843C3e0627f36551660506dEd5b349Fa968`) and Monad Testnet (`0x9EEC5aD4FC092fD468A8114007e541238F4Ba5ee`).
    - **Non-Blocking Settlement UX:** Built a streaming visual settlement hero (`Preparing` → `Confirming` → `Paid`) engineered to take advantage of Monad's ~600ms block finality.
-   - **Takumi Agent (Kimi K2.6):** Conversational remittance orchestrator allowing users to send AUSD over Monad in natural language.
+   - **Takumi Agent (Kimi K2.6):** A companion inside the payment app that checks balances and sends AUSD over Monad from plain-language requests, with every action approved by the user.
 3. **AI Tools Disclosure:**
    Assisted by Claude (Sonnet/Opus) and Gemini for design synthesis, test generation, and documentation.
 
