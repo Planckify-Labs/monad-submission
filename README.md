@@ -17,6 +17,38 @@
 
 ---
 
+## Product at a Glance
+
+TakumiPay is built on two pillars that meet in one simple experience:
+
+```text
+                  TAKUMIPAY
+                      │
+          ┌───────────┴───────────┐
+          │                       │
+      PAYMENTS                INTELLIGENCE
+          │                       │
+    Stablecoins              TakumiAgent
+          │                       │
+    Real-world use          Financial companion
+          │                       │
+    QR payments             DeFi / Yield / Strategies
+          │                       │
+          └───────────┬───────────┘
+                      │
+              SIMPLE USER EXPERIENCE
+                      │
+                 "JUST TAP"
+```
+
+| Pillar | What it is | In this submission |
+|---|---|---|
+| **Payments** | Stablecoins that people can spend in the real world, not just hold. | Agora AUSD on Monad, spent at QRIS merchants and PPOB bills (electricity, pulsa, data) through national QR rails. |
+| **Intelligence** | **Takumi Agent**, a financial companion that goes beyond sending money. | Conversational remittance powered by Kimi K2.6, plus a DeFi specialist for yield and strategies. |
+| **Simple user experience** | Everything above collapses into one gesture. | Passkey sign-up and a biometric tap to pay (Mera), with no seed phrase to write down. |
+
+---
+
 ## The Vision
 
 Cross-border remittance is the definitive consumer application where on-chain rails provide immediate, tangible superiority over traditional banking:
