@@ -58,7 +58,7 @@ Digital dollars like Agora AUSD are fast, cheap, and stable, yet most people can
 TakumiPay removes both problems:
 1. **Mera Passkeys:** One-tap biometric sign-up (Face ID / Fingerprint) deriving a secp256k1 EOA via WebAuthn PRF. No seed phrases or recovery phrases ever shown to the user.
 2. **Monad Speed & Scale:** ~600ms block finality and sub-cent gas fees make everyday payments instant and affordable.
-3. **Agora AUSD Stablecoin:** Dollars held safely in cash-and-treasury-backed AUSD (`0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a`).
+3. **Agora AUSD:** A dollar stablecoin issued by Agora, backed 1:1 by cash, short-term US Treasuries and overnight repo, with monthly reserve attestations (`0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a`).
 4. **Immediate Spendability (QRIS / UMKM):** No off-ramp step. Balances are spent directly at 44M+ merchants across Indonesia via national QR rails.
 5. **Sending money home:** The same rails serve migrant workers in Southeast Asia, who today endure 2–5 day settlement delays and 5–10% hidden foreign exchange markups.
 6. **Takumi Agent (Kimi K2.6):** A companion built into the app. Users can ask in plain words, such as *"What's my balance?"* or *"Send $50 to my mom in Jakarta"*, and approve each action with a tap.
@@ -146,7 +146,7 @@ flowchart TD
    - The transaction broadcasts to Monad, calling `processMerchantPayment` on `TakumiPay.sol` (v2.1.0 UUPS Proxy), transferring Agora AUSD in ~600ms.
    - The UI immediately renders a non-blocking settlement timeline (`Preparing` → `Confirming` → `Paid`).
 3. **PPOB Fulfilment & QRIS Merchant Disbursement**:
-   - Once the Monad transaction confirms, `FulfilmentService` routes the settled order through `VendorRegistry` to the PPOB Provider (e.g. VCGamers/Acme PPOB) to deliver electricity prepaid tokens or mobile pulsa in real-time.
+   - Once the Monad transaction confirms, `FulfilmentService` routes the settled order through `VendorRegistry` to a PPOB provider to deliver electricity prepaid tokens or mobile pulsa in real-time.
    - For merchant payments, the equivalent fiat amount is disbursed directly to the merchant's local bank or e-wallet account (GoPay, OVO, DANA).
 4. **Real-Time Indexing & Push Notifications (Zerion Integration)**:
    - Monad on-chain activity is indexed via Zerion.
